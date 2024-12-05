@@ -1,0 +1,30 @@
+{
+  "name": "task-management-tool-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "build": "rimraf dist && npx tsc",
+    "prestart": "npm run build",
+    "start": "node dist/app.js",
+    "preserve": "npm run build",
+    "serve": "concurrently \"npx tsc -w\"  \"nodemon dist/app.js\""
+  },
+  "keywords": [],
+  "author": "Sargis Kirakosyan",
+  "license": "ISC",
+  "dependencies": {
+    "@types/express": "github:types/express",
+    "@types/node": "^22.10.1",
+    "body-parser": "^1.20.3",
+    "concurrently": "^9.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "mongoose": "^8.8.3",
+    "rimraf": "^6.0.1",
+    "typecript": "^0.0.1-security"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}

@@ -1,0 +1,55 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+
+# Dependency directories
+bower_components/
+
+# Build outputs
+dist/
+build/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE specific files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Coverage files
+coverage/
+
+# Temporary files
+tmp/
+temp/
+
+# Compiled files and maps
+*.js.map
+*.d.ts
+*.js.snap
+
+# Process manager files
+pids/
+*.pid
+*.pid.lock
+
+# Debug files
+*.swp
+*.swp.*
+
+# Miscellaneous
+*.cache
