@@ -5,7 +5,7 @@ class DataBAseConnection {
         try {
             await mongoose.connect(dbURI);
             console.log('Connection to the database successfully')
-        } catch (error: object) {
+        } catch (error) {
             console.log('Connection to the database failed: ', error);
             process.exit(1);
         }
