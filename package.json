@@ -14,6 +14,10 @@
   "author": "Sargis Kirakosyan",
   "license": "ISC",
   "dependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/mongoose": "^5.11.96",
     "@types/node": "^22.10.1",
     "body-parser": "^1.20.3",
     "concurrently": "^9.1.0",
@@ -25,9 +29,6 @@
     "typecript": "^0.0.1-security"
   },
   "devDependencies": {
-    "@types/bcrypt": "^5.0.2",
-    "@types/express": "^5.0.0",
-    "bcrypt": "^5.1.1",
     "nodemon": "^3.1.7"
   }
 }

@@ -1,4 +1,4 @@
-import mongoose, {Document, Schema, Types} from 'mongoose';
+import mongoose, { Document, Schema, Types } from 'mongoose';
 
 enum TaskPriority {
     Low = 'Low',
@@ -46,11 +46,11 @@ const TaskSchema: Schema<Task> = new Schema<Task>({
         type: Date,
     },
     assignedTo: {
-        type: Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'User',
     },
     createdBy: {
-        type: Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'User',
         required: true,
     },
