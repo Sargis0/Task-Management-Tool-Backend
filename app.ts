@@ -5,11 +5,14 @@ import express, {Express} from 'express';
 import {corsMiddleware} from './middleware/cors';
 
 import DataBAseConnection from './config/db';
+import authorizationRout from "./routes/auth";
 
 const PORT: number = parseInt(process.env.PORT || '3002', 10);
 const app: Express = express();
 
 app.use(corsMiddleware);
+app.use(express.json());
+app.use('/auth', authorizationRout);
 
 const start = async (): Promise<void> => {
     try {
