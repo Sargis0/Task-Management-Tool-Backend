@@ -1,8 +1,8 @@
 import {Schema, model} from 'mongoose';
 
-import {UserRole, IUser} from './task-and-user-definitions';
+import {IOwner} from './task-and-user-definitions'
 
-const UserSchema: Schema<IUser> = new Schema<IUser>({
+const OwnerSchema: Schema<IOwner> = new Schema<IOwner>({
     firstName: {
         type: String,
         required: true,
@@ -11,6 +11,12 @@ const UserSchema: Schema<IUser> = new Schema<IUser>({
     lastName: {
         type: String,
         required: true,
+        trim: true
+    },
+    company: {
+        type: String,
+        required: true,
+        unique: true,
         trim: true
     },
     email: {
@@ -26,26 +32,14 @@ const UserSchema: Schema<IUser> = new Schema<IUser>({
         minlength: 6,
         maxlength: 20
     },
-    role: {
-        type: String,
-        enum: Object.values(UserRole),
-        default: UserRole.User
-    },
-    owner: {
-        type: Schema.Types.ObjectId,
-        ref: 'Owner'
+    registrationTime: {
+        type: Date,
+        default: Date.now
     },
     projects: [{
         type: Schema.Types.ObjectId,
         ref: 'Project'
-    }],
-    tasks: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Task'
     }]
-}, {
-    timestamps: true,
-    versionKey: false,
 });
 
-export default model<IUser>('User ', UserSchema);
+export default model<IOwner>('ownerSchema', OwnerSchema);

@@ -1,61 +1,52 @@
-import mongoose, { Document, Schema, Types } from 'mongoose';
+import {Schema, model} from 'mongoose';
 
-enum TaskPriority {
-    Low = 'Low',
-    Medium = 'Medium',
-    High = 'High'
-}
+import {TaskPriority, TaskStatus, ITask} from './task-and-user-definitions';
 
-enum TaskStatus {
-    Todo = 'Todo',
-    InProgress = 'In Progress',
-    Complete = 'Complete'
-}
-
-interface Task extends Document {
-    title: string;
-    description?: string;
-    priority: TaskPriority;
-    status: TaskStatus;
-    dueDate?: Date;
-    assignedTo?: Types.ObjectId;
-    createdBy: Types.ObjectId;
-}
-
-const TaskSchema: Schema<Task> = new Schema<Task>({
+const TaskSchema: Schema<ITask> = new Schema<ITask>({
     title: {
         type: String,
         required: true,
-        trim: true,
+        unique: true,
+        trim: true
     },
     description: {
         type: String,
-        trim: true,
+        trim: true
     },
-    priority: {
-        type: String,
-        enum: Object.values(TaskPriority),
+    creator: {
+        type: Schema.Types.ObjectId,
         required: true,
+        ref: 'User'
+    },
+    timeOfCreation: {
+        type: Date,
+        default: Date.now
     },
     status: {
         type: String,
+        required: true,
         enum: Object.values(TaskStatus),
-        default: TaskStatus.Todo,
+        default: TaskStatus.Todo
     },
-    dueDate: {
-        type: Date,
+    priority: {
+        type: String,
+        required: true,
+        enum: Object.values(TaskPriority)
+    },
+    estimatedCompletionTime: {
+        type: Number
     },
     assignedTo: {
         type: Schema.Types.ObjectId,
-        ref: 'User',
+        ref: 'User'
     },
-    createdBy: {
+    project: {
         type: Schema.Types.ObjectId,
-        ref: 'User',
         required: true,
-    },
+        ref: 'Project'
+    }
 }, {
     timestamps: true,
 });
 
-export default mongoose.model<Task>('Task', TaskSchema);
+export default model<ITask>('Task', TaskSchema);
